@@ -1,0 +1,79 @@
+Postman Vendor Sign up/in
+1. Set the method to POST.
+2. Enter the URL: http://localhost:8080/api/vendors/signup or http://localhost:8080/api/vendors/signin.
+3. Go to the Body tab.
+4. Choose raw and set Content-Type to JSON.
+5. Enter the JSON payload:
+{
+  "vendorId": "ABCD123",
+  "password": "Password1"
+}
+
+Postman Customer Sign up/in
+1. Set the method to POST.
+2. Enter the URL: http://localhost:8080/api/customers/signup or http://localhost:8080/api/customers/signin.
+3. Go to the Body tab.
+4. Choose raw and set Content-Type to JSON.
+5. Enter the JSON payload:
+{
+    "customerId": "CUST123",
+    "password": "securePass"
+}
+
+
+Postman Configuration:
+
+View Configuration
+GET /api/configuration/view-configuration
+
+Update Admin Credentials
+PUT /api/configuration/update-admin-credentials
+Payload:
+{
+    "oldConfigAdminUser": "admin",
+    "oldConfigAdminPassword": "admin123",
+    "newConfigAdminUser": "newAdmin",
+    "newConfigAdminPassword": "newPassword123"
+}
+Update Ticket system Settings
+PUT /api/configuration/update-ticket-settings
+Payload:
+
+{
+    "configAdminUser": "admin",
+    "configAdminPassword": "admin123",
+    "ticketReleaseRate": 2.5,
+    "customerRetrievalRate": 1.8,
+    "maxTicketCapacity": 200
+}
+
+
+Postman Generate Ticket list
+POST Request to /api/tickets/generate:
+
+{
+    "vendor_Id": "jren234",
+    "event_Name": "yolo",
+    "price": 75.3,
+    "time_Duration": "2 hours",
+    "date": "2022-10-20",
+    "batch_Size": 50
+}
+
+Postman Generate PurchaseRequest
+POST http://localhost:8080/api/purchases/create
+Content-Type: application/json
+
+{
+   "customer_id": "pink234",
+   "ticketToBook": 30,
+   "event_Name": "lorent"
+}
+
+
+
+http://localhost:8080/api/simulation/start-vendor?numberOfVendors=5
+http://localhost:8080/api/simulation/start-customer?numberOfCustomers=5
+http://localhost:8080/api/simulation/start?numberOfUsers=5
+
+

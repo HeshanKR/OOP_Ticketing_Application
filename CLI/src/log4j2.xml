@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!--Real-Time Ticketing System CLI by Heshan Ratnaweera, Student ID UOW: W2082289 IIT: 20222094.-->
+    <Appenders>
+        <!-- General vendor log file -->
+        <File name="VendorLogger" fileName="logs/vendor.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+
+        <!-- Separate log file for run method of Vendor -->
+        <File name="VendorRunLogger" fileName="logs/vendor_run.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+
+        <!-- Log file for TicketPoolAdd (add ticket and save ticket logs) -->
+        <File name="TicketPoolAddFile" fileName="logs/ticketPool_add_tickets.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+
+        <!-- Log file for TicketPoolSave (save ticket logs) -->
+        <File name="TicketPoolSaveFile" fileName="logs/ticketPool_save_tickets.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+
+        <!-- Log file for TicketPoolRemove (purchase ticket logs) -->
+        <File name="TicketPoolRemoveFile" fileName="logs/ticketPool_Remove_tickets.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+
+        <!-- Separate log file for run method of Customer -->
+        <File name="CustomerRunLogger" fileName="logs/Customer_run.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+
+        <!-- Console appender for CLI screen -->
+        <Console name="ConsoleLogger" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </Console>
+
+    </Appenders>
+
+    <Loggers>
+        <!-- Logger for general vendor information -->
+        <Logger name="Vendor" level="info" additivity="false">
+            <AppenderRef ref="VendorLogger"/>
+        </Logger>
+
+        <!-- Logger specifically for the run method in the Vendor class -->
+        <Logger name="VendorRun" level="info" additivity="false">
+            <AppenderRef ref="VendorRunLogger"/>
+            <AppenderRef ref="ConsoleLogger"/>
+        </Logger>
+
+        <!-- Logger for TicketPoolAdd (add ticket logs) -->
+        <Logger name="TicketPoolAdd" level="info" additivity="false">
+            <AppenderRef ref="TicketPoolAddFile"/>
+        </Logger>
+
+        <!-- Logger for TicketPoolSave (save ticket logs) -->
+        <Logger name="TicketPoolSave" level="info" additivity="false">
+            <AppenderRef ref="TicketPoolSaveFile"/>
+        </Logger>
+
+        <!-- Logger for TicketPoolRemove (purchase ticket logs) -->
+        <Logger name="TicketPoolRemove" level="info" additivity="false">
+            <AppenderRef ref="TicketPoolRemoveFile"/>
+        </Logger>
+
+        <!-- Logger specifically for the run method in the Customer class -->
+        <Logger name="CustomerRun" level="info" additivity="false">
+            <AppenderRef ref="CustomerRunLogger"/>
+            <AppenderRef ref="ConsoleLogger"/>
+        </Logger>
+
+        <!-- Root logger configuration -->
+        <Root level="info">
+            <AppenderRef ref="VendorLogger"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
